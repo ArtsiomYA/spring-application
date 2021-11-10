@@ -1,36 +1,36 @@
 package com.example.practics.controllers;
 
+import com.example.practics.dto.UserDto;
 import com.example.practics.models.Users;
 import com.example.practics.repository.UsersRepository;
+import com.example.practics.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("users")
 public class UsersController {
+    private final UserService userService;
     private final UsersRepository usersRepository;
 
-    @Autowired
-    public UsersController(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
-    }
-
     @GetMapping
-    public List<Users> getUsers() {
-        return usersRepository.findAll();
+    public ResponseEntity<List<Users>> getUsers() {
+        return ResponseEntity.ok(usersRepository.findAll());
     }
 
     @GetMapping("{id}")
-    public Users getUser(@PathVariable("id") Users user) {
-        return user;
+    public ResponseEntity<Users> getUser(@PathVariable("id") Long id) {
+        return ResponseEntity.of(usersRepository.findById(id));
     }
 
     @PostMapping
-    public Users createUser(@RequestBody Users user) {
-        return usersRepository.save(user);
+    public Users createUser(@RequestBody UserDto user) {
+        return userService.createUser(user);
     }
 
     @PutMapping("{id}")

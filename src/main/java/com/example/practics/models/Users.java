@@ -23,6 +23,7 @@ public class Users {
     private String login;
 
     @Column(columnDefinition = "varchar(255)")
+    @JsonIgnore
     private String password;
 
 //    @OneToOne(optional=false, cascade=CascadeType.ALL)
