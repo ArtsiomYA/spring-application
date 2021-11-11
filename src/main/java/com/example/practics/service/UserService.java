@@ -21,4 +21,10 @@ public class UserService {
         user.setPassword(userDto.getPassword());
         return usersRepository.save(user);
     }
+
+    public Users updateUser(Users userFromDB, UserDto user) {
+        userFromDB.setLogin(user.getLogin());
+        userFromDB.setPassword(user.getPassword());
+        return userFromDB;
+    }
 }
