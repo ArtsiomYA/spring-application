@@ -1,5 +1,7 @@
 package com.example.practics.dto;
 
+import com.example.practics.models.Faculty;
+import com.example.practics.models.Users;
 import lombok.Data;
 
 import javax.validation.constraints.Max;
@@ -23,4 +25,8 @@ public class GradeDto {
     @Min(1)
     @Max(100)
     private Integer certificateScore;
+
+    private Users user;
+    private Faculty faculty;
+    private Boolean approve;
 }

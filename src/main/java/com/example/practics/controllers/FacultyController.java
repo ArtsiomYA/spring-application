@@ -19,7 +19,7 @@ public class FacultyController {
     }
 
     @GetMapping
-    public List<Faculty> getFaculty() {
+    public List<Faculty> getFaculties() {
         return facultyRepository.findAll();
     }
 

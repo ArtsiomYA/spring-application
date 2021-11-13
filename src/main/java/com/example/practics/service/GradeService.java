@@ -17,6 +17,9 @@ public class GradeService {
         grade.setSubjectSecond(gradeDto.getSubjectSecond());
         grade.setSubjectThird(gradeDto.getSubjectThird());
         grade.setCertificateScore(gradeDto.getCertificateScore());
+        grade.setApprove(gradeDto.getApprove());
+        grade.setFaculty(gradeDto.getFaculty());
+        grade.setUsers(gradeDto.getUser());
         return gradesRepository.save(grade);
     }
 }
