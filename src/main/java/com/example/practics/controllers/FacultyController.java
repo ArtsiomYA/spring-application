@@ -2,6 +2,7 @@ package com.example.practics.controllers;
 
 import com.example.practics.models.Faculty;
 import com.example.practics.repository.FacultyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,14 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("faculty")
 public class FacultyController {
     private final FacultyRepository facultyRepository;
-
-    @Autowired
-    public FacultyController(FacultyRepository facultyRepository) {
-        this.facultyRepository = facultyRepository;
-    }
 
     @GetMapping
     public List<Faculty> getFaculties() {
