@@ -28,5 +28,4 @@ public class GradeDto {
 
     private Users user;
     private Faculty faculty;
-    private Boolean approve;
 }

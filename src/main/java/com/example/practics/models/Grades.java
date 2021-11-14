@@ -35,15 +35,15 @@ public class Grades {
     @Column(name = "certificate_score")
     private Integer certificateScore;
 
-    @OneToOne(optional=false, cascade=CascadeType.ALL)
-    @JoinColumn(name = "id_users")
+    @OneToOne(optional=false, cascade=CascadeType.MERGE)
+    @JoinColumn(name = "id_users", referencedColumnName = "id")
     private Users users;
 
     @Column(columnDefinition = "boolean default false")
     private Boolean approve;
 
-    @OneToOne(optional=false, cascade=CascadeType.ALL)
-    @JoinColumn(name = "id_faculty")
+    @OneToOne(optional=false, cascade=CascadeType.MERGE)
+    @JoinColumn(name = "id_faculty", referencedColumnName = "id")
     private Faculty faculty;
 
     @Override
