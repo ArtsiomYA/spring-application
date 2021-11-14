@@ -5,8 +5,6 @@ import com.example.practics.models.Grades;
 import com.example.practics.repository.GradesRepository;
 import com.example.practics.service.GradeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,9 +33,8 @@ public class GradesController {
     }
 
     @PutMapping("{id}")
-    public Grades updateGrade(@PathVariable("id") Grades gradeFromDB, @RequestBody Grades grade) {
-        BeanUtils.copyProperties(grade, gradeFromDB, "id");
-        return gradesRepository.save(gradeFromDB);
+    public Grades updateGrade(@PathVariable("id") Grades gradeFromDB, @RequestBody GradeDto gradeDto) {
+        return gradeService.updateGrade(gradeFromDB, gradeDto);
     }
 
     @DeleteMapping("{id}")

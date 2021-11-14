@@ -21,4 +21,14 @@ public class GradeService {
         grade.setUsers(gradeDto.getUser());
         return gradesRepository.save(grade);
     }
+
+    public Grades updateGrade(Grades gradeFromDB, GradeDto gradeDto) {
+        gradeFromDB.setSubjectFirst(gradeDto.getSubjectFirst());
+        gradeFromDB.setSubjectSecond(gradeDto.getSubjectSecond());
+        gradeFromDB.setSubjectThird(gradeDto.getSubjectThird());
+        gradeFromDB.setCertificateScore(gradeDto.getCertificateScore());
+        gradeFromDB.setUsers(gradeDto.getUser());
+        gradeFromDB.setFaculty(gradeDto.getFaculty());
+        return gradesRepository.save(gradeFromDB);
+    }
 }
