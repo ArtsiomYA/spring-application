@@ -33,7 +33,7 @@ public class GradesController {
     }
 
     @PutMapping("{id}")
-    public Grades updateGrade(@PathVariable("id") Grades gradeFromDB, @RequestBody GradeDto gradeDto) {
+    public Grades updateGrade(@PathVariable("id") Grades gradeFromDB, @Valid @RequestBody GradeDto gradeDto) {
         return gradeService.updateGrade(gradeFromDB, gradeDto);
     }
 
