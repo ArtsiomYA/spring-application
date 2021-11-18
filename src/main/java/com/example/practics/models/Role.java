@@ -18,19 +18,19 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(columnDefinition = "varchar(50)")
-    private String role_name;
+    @Column(name = "role_name",columnDefinition = "varchar(50)")
+    private String roleName;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return Objects.equals(id, role.id) && Objects.equals(role_name, role.role_name);
+        return Objects.equals(id, role.id) && Objects.equals(roleName, role.roleName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, role_name);
+        return Objects.hash(id, roleName);
     }
 }

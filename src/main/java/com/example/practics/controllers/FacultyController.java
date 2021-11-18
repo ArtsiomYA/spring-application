@@ -4,7 +4,6 @@ import com.example.practics.models.Faculty;
 import com.example.practics.repository.FacultyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -12,7 +12,7 @@ public class GradeService {
     private final GradesRepository gradesRepository;
 
     public Grades createGrade(GradeDto gradeDto) {
-        var grade = new Grades();
+        Grades grade = new Grades();
         grade.setSubjectFirst(gradeDto.getSubjectFirst());
         grade.setSubjectSecond(gradeDto.getSubjectSecond());
         grade.setSubjectThird(gradeDto.getSubjectThird());

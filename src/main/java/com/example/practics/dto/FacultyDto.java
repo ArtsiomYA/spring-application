@@ -8,5 +8,7 @@ import javax.validation.constraints.NotNull;
 public class FacultyDto {
 
     @NotNull
-    private String admission_plan;
+    private String admissionPlan;
+    @NotNull
+    private String facultyName;
 }

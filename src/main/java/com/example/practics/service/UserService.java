@@ -6,13 +6,15 @@ import com.example.practics.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UsersRepository usersRepository;
 
     public Users createUser(UserDto userDto) {
-        var listUsers = usersRepository.findAllByLogin(userDto.getLogin());
+        List<Users> listUsers = usersRepository.findAllByLogin(userDto.getLogin());
         if (!listUsers.isEmpty()) {
             throw new IllegalArgumentException();
         }
