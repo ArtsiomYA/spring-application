@@ -1,11 +1,14 @@
 package com.example.practics.controllers;
 
+import com.example.practics.dto.FacultyDto;
 import com.example.practics.models.Faculty;
 import com.example.practics.repository.FacultyRepository;
+import com.example.practics.service.FacultyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -13,6 +16,7 @@ import java.util.List;
 @RequestMapping("faculty")
 public class FacultyController {
     private final FacultyRepository facultyRepository;
+    private final FacultyService facultyService;
 
     @GetMapping
     public List<Faculty> getFaculties() {
@@ -25,14 +29,13 @@ public class FacultyController {
     }
 
     @PostMapping()
-    public Faculty createFaculty(@RequestBody Faculty faculty) {
-        return facultyRepository.save(faculty);
+    public Faculty createFaculty(@Valid @RequestBody FacultyDto faculty) {
+        return facultyService.createFaculty(faculty);
     }
 
     @PutMapping("{id}")
-    public Faculty updateFaculty(@PathVariable("id") Faculty facultyFromDB, @RequestBody Faculty faculty) {
-        BeanUtils.copyProperties(faculty, facultyFromDB, "id");
-        return facultyRepository.save(facultyFromDB);
+    public Faculty updateFaculty(@Valid @PathVariable("id") Faculty facultyFromDB, @RequestBody FacultyDto facultyDto) {
+        return facultyService.updateFaculty(facultyFromDB, facultyDto);
     }
 
     @DeleteMapping("{id}")

@@ -18,7 +18,7 @@ public class UserService {
         if (!listUsers.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        var user = new Users();
+        Users user = new Users();
         user.setLogin(userDto.getLogin());
         user.setPassword(userDto.getPassword());
         return usersRepository.save(user);
@@ -27,6 +27,6 @@ public class UserService {
     public Users updateUser(Users userFromDB, UserDto user) {
         userFromDB.setLogin(user.getLogin());
         userFromDB.setPassword(user.getPassword());
-        return userFromDB;
+        return usersRepository.save(userFromDB);
     }
 }
