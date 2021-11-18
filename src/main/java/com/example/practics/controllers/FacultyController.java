@@ -5,7 +5,6 @@ import com.example.practics.models.Faculty;
 import com.example.practics.repository.FacultyRepository;
 import com.example.practics.service.FacultyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
