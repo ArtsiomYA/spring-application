@@ -1,6 +1,7 @@
 package com.example.practics.service;
 
 import com.example.practics.dto.UserDto;
+import com.example.practics.exceptions.BadRequestException;
 import com.example.practics.models.Users;
 import com.example.practics.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class UserService {
     public Users createUser(UserDto userDto) {
         List<Users> listUsers = usersRepository.findAllByLogin(userDto.getLogin());
         if (!listUsers.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new BadRequestException();
         }
         Users user = new Users();
         user.setLogin(userDto.getLogin());

@@ -1,6 +1,7 @@
 package com.example.practics.service;
 
 import com.example.practics.dto.FacultyDto;
+import com.example.practics.exceptions.BadRequestException;
 import com.example.practics.models.Faculty;
 import com.example.practics.repository.FacultyRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class FacultyService {
     public Faculty createFaculty(FacultyDto facultyDto) {
         List<Faculty> listFaculty = facultyRepository.findAllByFacultyName(facultyDto.getFacultyName());
         if (!listFaculty.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new BadRequestException();
         }
         Faculty faculty = new Faculty();
         faculty.setFacultyName(facultyDto.getFacultyName());
