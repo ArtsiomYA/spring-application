@@ -17,7 +17,7 @@ public class UserService {
     public Users createUser(UserDto userDto) {
         List<Users> listUsers = usersRepository.findAllByLogin(userDto.getLogin());
         if (!listUsers.isEmpty()) {
-            throw new BadRequestException();
+            throw new BadRequestException("A user with this login already exists");
 
         }
         Users user = new Users();

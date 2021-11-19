@@ -17,7 +17,7 @@ public class FacultyService {
     public Faculty createFaculty(FacultyDto facultyDto) {
         List<Faculty> listFaculty = facultyRepository.findAllByFacultyName(facultyDto.getFacultyName());
         if (!listFaculty.isEmpty()) {
-            throw new BadRequestException();
+            throw new BadRequestException("Such a faculty already exists");
         }
         Faculty faculty = new Faculty();
         faculty.setFacultyName(facultyDto.getFacultyName());

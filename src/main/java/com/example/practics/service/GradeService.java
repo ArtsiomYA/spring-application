@@ -21,7 +21,7 @@ public class GradeService {
     public Grades createGrade(GradeDto gradeDto) {
         List<Grades> grades = gradesRepository.findGradesByUsersId(gradeDto.getUserId());
         if (!grades.isEmpty()) {
-            throw new BadRequestException();
+            throw new BadRequestException("This user already has grade");
         }
         Grades grade = new Grades();
         grade.setSubjectFirst(gradeDto.getSubjectFirst());
