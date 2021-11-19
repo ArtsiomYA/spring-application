@@ -3,7 +3,9 @@ package com.example.practics.service;
 import com.example.practics.dto.GradeDto;
 import com.example.practics.exceptions.BadRequestException;
 import com.example.practics.models.Grades;
+import com.example.practics.repository.FacultyRepository;
 import com.example.practics.repository.GradesRepository;
+import com.example.practics.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GradeService {
     private final GradesRepository gradesRepository;
+    private final FacultyRepository facultyRepository;
+    private final UsersRepository usersRepository;
 
     public Grades createGrade(GradeDto gradeDto) {
-        List<Grades> grades = gradesRepository.findGradesByUsers(gradeDto.getUser().getId());
+        List<Grades> grades = gradesRepository.findGradesByUsersId(gradeDto.getUserId());
         if (!grades.isEmpty()) {
             throw new BadRequestException();
         }
@@ -24,8 +28,8 @@ public class GradeService {
         grade.setSubjectSecond(gradeDto.getSubjectSecond());
         grade.setSubjectThird(gradeDto.getSubjectThird());
         grade.setCertificateScore(gradeDto.getCertificateScore());
-        grade.setFaculty(gradeDto.getFaculty());
-        grade.setUsers(gradeDto.getUser());
+        grade.setFaculty(facultyRepository.findFacultyById(gradeDto.getFacultyId()));
+        grade.setUsers(usersRepository.findUsersById(gradeDto.getUserId()));
         return gradesRepository.save(grade);
     }
 
@@ -34,8 +38,8 @@ public class GradeService {
         gradeFromDB.setSubjectSecond(gradeDto.getSubjectSecond());
         gradeFromDB.setSubjectThird(gradeDto.getSubjectThird());
         gradeFromDB.setCertificateScore(gradeDto.getCertificateScore());
-        gradeFromDB.setUsers(gradeDto.getUser());
-        gradeFromDB.setFaculty(gradeDto.getFaculty());
+        gradeFromDB.setUsers(usersRepository.findUsersById(gradeDto.getUserId()));
+        gradeFromDB.setFaculty(facultyRepository.findFacultyById(gradeDto.getFacultyId()));
         return gradesRepository.save(gradeFromDB);
     }
 }

@@ -26,6 +26,9 @@ public class GradeDto {
     @Max(100)
     private Integer certificateScore;
 
-    private Users user;
-    private Faculty faculty;
+    @Min(1)
+    private Long userId;
+
+    @Min(1)
+    private Long facultyId;
 }

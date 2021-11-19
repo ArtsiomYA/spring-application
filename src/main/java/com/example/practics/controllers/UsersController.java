@@ -4,6 +4,7 @@ import com.example.practics.dto.UserDto;
 import com.example.practics.models.Users;
 import com.example.practics.repository.UsersRepository;
 import com.example.practics.service.UserService;
+import javassist.tools.web.BadHttpRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
