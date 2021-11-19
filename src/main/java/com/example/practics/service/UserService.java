@@ -4,11 +4,8 @@ import com.example.practics.dto.UserDto;
 import com.example.practics.exceptions.BadRequestException;
 import com.example.practics.models.Users;
 import com.example.practics.repository.UsersRepository;
-import javassist.tools.web.BadHttpRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.properties.bind.BindException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.List;
 
