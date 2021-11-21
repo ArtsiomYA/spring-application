@@ -1,0 +1,40 @@
+--create sequence hibernate_sequence start 1 increment 1;
+--
+--create table faculty (
+--id int8 not null,
+--admission_plan varchar(100),
+--faculty_name varchar(100),
+--primary key (id));
+--
+--create table grades (
+--id int8 not null,
+--approve boolean default false,
+--certificate_score int4 check (certificate_score<=100),
+--subject_first int4 check (subject_first<=100),
+--subject_second int4 check (subject_second<=100),
+--subject_third int4 check (subject_third<=100),
+--id_faculty int8 not null,
+--id_users int8 not null, primary key (id));
+--
+--create table role (
+--id int8 not null,
+--role_name varchar(50),
+--primary key (id));
+--
+--create table users (
+--id int8 not null,
+--login varchar(255),
+--password varchar(255),
+--primary key (id));
+--
+--alter table grades
+--add constraint UK_nt7apggcb6vpf3q2v0fc58pdj unique (id_faculty);
+--
+--alter table grades
+--add constraint UK_a9fqnrgmhkfsjvbtqhkhihear unique (id_users);
+--
+--alter table grades
+--add constraint FKkpaymfr8vhagniwcbth0jbcby foreign key (id_faculty) references faculty;
+--
+--alter table grades
+--add constraint FKfrqv6jj26ycmq0uqihsmofd9w foreign key (id_users) references users;
